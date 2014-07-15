@@ -144,4 +144,34 @@ activityFill$daycat[activityFill$weekday == "Monday" |
 ##Add Weekend to daycat column
 activityFill$daycat[activityFill$weekday == "Saturday" | 
         activityFill$weekday == "Sunday"] <- "Weekend"
+##Convert daycat to factor
+activityFill$daycat <- factor(activityFill$daycat)
+```
+
+###Plot  of the 5-minute interval and the average number of steps taken, 
+###averaged across all weekend days and all weekday days (y-axis)
+```{r}
+##Create weekday data frame with mean steps by interval
+meanStepsByIntervalWeekday <- aggregate(steps ~ interval, subset(activityFill,
+        daycat == "Weekday"), mean, na.action=na.omit)
+##Set mean steps for Weekday as numeric and clean up column names
+colnames(meanStepsByIntervalWeekday) <- c("interval", "Average_Steps")
+meanStepsByIntervalWeekday$interval <- 
+        as.numeric(meanStepsByIntervalWeekday$interval)
+
+##Create weekend data frame with mean steps by interval
+meanStepsByIntervalWeekend <- aggregate(steps ~ interval, subset(activityFill,
+        daycat == "Weekend"), mean, na.action=na.omit)
+##Set mean steps for Weekend as numeric and clean up column names
+colnames(meanStepsByIntervalWeekend) <- c("interval", "Average_Steps")
+meanStepsByIntervalWeekend$interval <- 
+        as.numeric(meanStepsByIntervalWeekend$interval)
+
+library(grid)
+library(gridExtra)
+p1 <- ggplot(meanStepsByIntervalWeekday, aes(interval, Average_Steps)) + 
+        geom_line() + ggtitle("Average Number of Steps by Interval for Weekday Days")
+p2 <- ggplot(meanStepsByIntervalWeekend, aes(interval, Average_Steps)) + 
+        geom_line() + ggtitle("Average Number of Steps by Interval for Weekend Days")
+grid.arrange(p1, p2, ncol = 1, main = "Weekday vs Weekday Interval Steps")
 ```
