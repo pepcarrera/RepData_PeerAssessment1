@@ -86,7 +86,7 @@ length(which(is.na(activity$steps)))
 ```
 
 Replace missing NA values with the mean of their interval:
-```{r, message=FALSE}
+```{r, warning=FALSE}
 ##Convert interval to numeric
 activity$interval <- as.numeric(activity$interval)
 ##Merge average steps by Interval into activity data frame
@@ -123,10 +123,12 @@ t2 = kable(medianStepsFill, format='html', output = FALSE)
 cat(c('<table><tr valign="top"><td>', t1, '</td><td>', t2, '</td><tr></table>'),
     sep = '')
 ```
-Do these values differ from the estimates from the first part of the assignment?  
-What is the impact of imputing missing data on the estimates of the total daily
-number of steps?  
-Ans: Yes, there were clearly entire missing days of values which affected both  
+  
+  
+###Do these values differ from the estimates from the first part of the assignment?  
+###What is the impact of imputing missing data on the estimates of the total daily
+###number of steps?  
+Yes, there were clearly entire missing days of values which affected both  
 mean and median measures for some days.  This shows a clear impact of imputing
 missing data.
 
