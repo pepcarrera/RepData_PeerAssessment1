@@ -41,7 +41,7 @@ ggplot(stepsByDay, aes(x=steps)) + geom_histogram() +
         ggtitle("Frequency of Number of Steps by Day")
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
+![plot of chunk Frequency of Steps by Day](figure/Frequency of Steps by Day.png) 
 
 Calculate mean and median steps per day
 
@@ -589,7 +589,7 @@ ggplot(meanStepsByInterval, aes(interval, Average_Steps)) + geom_line() +
     ggtitle("Average Number of Steps by Interval")
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
+![plot of chunk Average Number of Steps by Interval](figure/Average Number of Steps by Interval.png) 
 
 Calculate the interval with the highest average (accross all days)
 
@@ -1730,4 +1730,4 @@ p2 <- ggplot(meanStepsByIntervalWeekend, aes(interval, Average_Steps)) +
 grid.arrange(p1, p2, ncol = 1, main = "Weekday vs Weekday Interval Steps")
 ```
 
-![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13.png) 
+![plot of chunk Weekday vs Weekday Interval Steps](figure/Weekday vs Weekday Interval Steps.png) 

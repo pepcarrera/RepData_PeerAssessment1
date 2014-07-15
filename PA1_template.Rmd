@@ -31,7 +31,7 @@ colnames(stepsByDay) <- c("steps", "date")
 ```
 
 Plot date in data frame using a histogram
-```{r, message=FALSE}
+```{r Frequency of Steps by Day, message=FALSE}
 library("ggplot2")
 ggplot(stepsByDay, aes(x=steps)) + geom_histogram() +
         ggtitle("Frequency of Number of Steps by Day")
@@ -62,7 +62,7 @@ cat(c('<table><tr valign="top"><td>', t1, '</td><td>', t2, '</td><tr></table>'),
 ## What is the average daily activity pattern?
 ###Plot  of the 5-minute interval and the average number of steps taken, 
 ###averaged across all days (y-axis)
-```{r, fig.width=20, fig.height=10}
+```{r Average Number of Steps by Interval, fig.width=20, fig.height=10}
 meanStepsByInterval <- aggregate(steps ~ interval, activity, mean, 
         na.action=na.omit)
 ##Set mean steps as numeric and clean up column names
@@ -152,7 +152,7 @@ activityFill$daycat <- factor(activityFill$daycat)
 
 ###Plot  of the 5-minute interval and the average number of steps taken, 
 ###averaged across all weekend days and all weekday days (y-axis)
-```{r}
+```{r Weekday vs Weekday Interval Steps}
 ##Create weekday data frame with mean steps by interval
 meanStepsByIntervalWeekday <- aggregate(steps ~ interval, subset(activityFill,
         daycat == "Weekday"), mean, na.action=na.omit)
